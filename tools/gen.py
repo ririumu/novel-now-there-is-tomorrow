@@ -6,8 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "source_data"
 OUT = ROOT / "site"
-BOOK = "AIなき春に、法を問う"
-SUBTITLE = "Back To The Basic"
+BOOK = "あの頃にやり直したかったこと"
 
 PAGE = """<!DOCTYPE html>
 <html lang="ja">
@@ -77,9 +76,9 @@ def index_page(cs):
     synopsis = "<br>\n".join(e(l) for l in (ROOT / "meta" / "synopsis.txt").read_text(encoding="utf-8").strip().split("\n"))
     words = (SRC / "00_README.md").read_text(encoding="utf-8").strip()
     status = "完結" if "（完）" in cs[-1]["body"][-1] else "連載中"
-    body = f"""<p class="eyebrow">{SUBTITLE}</p>
+    body = f"""<p class="eyebrow">{status}</p>
 <h1>{BOOK}</h1>
-<p class="sub">{status} ・ 全{len(cs)}話 ・ {total:,}字</p>
+<p class="sub">全{len(cs)}話 ・ {total:,}字</p>
 <p class="lead">{synopsis}</p>
 <p class="words">{e(words)}</p>
 <table class="toc">
