@@ -4,6 +4,7 @@ AI がない頃に憧れてみました。(原稿は `source_data/`)
 
 原稿を static HTML(余白と文字組み重視の静かなデザイン)にしたものが `site/` にあります。
 `site/index.html` をブラウザで開くだけで読めます。
+公開版: https://ririumu.github.io/novel-now-there-is-tomorrow/ (main への push で `site/` を GitHub Pages に配信。`.github/workflows/pages.yml`)
 
 ## 誤字脱字の修正手順
 ```
