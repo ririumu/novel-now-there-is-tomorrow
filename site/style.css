@@ -78,10 +78,12 @@ table.toc td.size { width: 6em; text-align: right; color: #555; font-size: 12px;
   padding: 20px 30px 30px;
   border: 1px solid #999;
   background: #fff;
-  font-size: 16px;
-  line-height: 1.9;
+  font-family: "Hiragino Mincho ProN", "Hiragino Mincho Pro", "YuMincho", "Yu Mincho", "游明朝", "HGS明朝E", "MS PMincho", "ＭＳ Ｐ明朝", "Noto Serif CJK JP", "Noto Serif JP", "IPAexMincho", serif;
+  font-size: 17px;
+  line-height: 2;
+  letter-spacing: 0.04em;
 }
-#novel h1 { margin: 0 0 1.2em; text-align: center; font-size: 18px; border-bottom: none; }
+#novel h1 { margin: 0 0 1.6em; text-align: center; font-size: 19px; font-weight: bold; letter-spacing: 0.1em; border-bottom: none; }
 #novel p { margin: 0; }
 
 #foot {
