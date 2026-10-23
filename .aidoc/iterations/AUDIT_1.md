@@ -5,3 +5,4 @@
 - branch feat/generator: gen.py(標準ライブラリのみ、HTML エスケープ、題名の括弧除去、前/次/目次ナビ)。`make site` で 7話+目次を生成 → merge。
 - 確認: 全章の `<p>` 数、ナビリンク、目次の字数表示を目視確認。ブラウザでの実表示確認は未実施。
 - branch docs/iteration-1: README / OVERVIEW / REPORT。
+- feat/mincho: 本文(#novel)を明朝体スタック(ヒラギノ明朝→游明朝→MS P明朝→Noto Serif JP→serif)に変更、行間2・字間0.04em。目次・UI はゴシックのまま。
