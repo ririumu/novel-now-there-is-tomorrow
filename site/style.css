@@ -8,8 +8,7 @@
   --ink-sub: #515154;
   --line: #d2d2d7;
   --accent: #0066cc;
-  --bar: rgba(251, 251, 253, 0.8);
-  --gothic: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic Medium", "Yu Gothic", "Meiryo", sans-serif;
+    --gothic: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic Medium", "Yu Gothic", "Meiryo", -apple-system, BlinkMacSystemFont, sans-serif;
   --mincho: "YuMincho", "Yu Mincho", "游明朝", "游明朝体", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Noto Serif CJK JP", "Noto Serif JP", "IPAexMincho", serif;
 }
 @media (prefers-color-scheme: dark) {
@@ -19,7 +18,6 @@
     --ink-sub: #a1a1a6;
     --line: #424245;
     --accent: #2997ff;
-    --bar: rgba(0, 0, 0, 0.72);
   }
 }
 
@@ -33,31 +31,13 @@ body {
   font-size: 15px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  line-break: strict;
+  word-break: auto-phrase; /* 文節で改行(Chrome/Edge)。未対応ブラウザは通常の禁則 */
 }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-/* ヘッダ: 半透明のスリムなバー */
-#head {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  padding: 0 24px;
-  height: 48px;
-  line-height: 48px;
-  text-align: center;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  background: var(--bar);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid var(--line);
-}
-#head a { color: var(--ink); }
-#head a:hover { text-decoration: none; opacity: .6; }
-
-main { max-width: 680px; margin: 0 auto; padding: 72px 24px 96px; }
+main { max-width: 680px; margin: 0 auto; padding: 88px 24px 96px; }
 
 /* 見出し */
 .eyebrow {
@@ -129,8 +109,8 @@ table.toc td.size { width: 5.5em; text-align: right; font-size: 13px; color: var
 .nav .off { color: var(--line); }
 
 @media (max-width: 600px) {
-  main { padding: 48px 20px 72px; }
-  h1 { font-size: 28px; }
+  main { padding: 56px 20px 72px; }
+  h1 { font-size: 24px; letter-spacing: 0.02em; }
   .lead { font-size: 16px; margin-top: 40px; }
   #novel { font-size: 16px; margin-top: 40px; }
   table.toc td.title { font-size: 15px; }
