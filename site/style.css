@@ -1,5 +1,6 @@
 /* 配色・書体はここで一元管理する。
-   読ませる文(題名・あらすじ・話タイトル・本文)は明朝、操作部品(ヘッダ・ナビ・メタ情報)はゴシック。 */
+   本文は画面で線が潰れにくいゴシック(16〜18px・行間1.8〜1.9・字間0.02em以下・1行35〜45字が国内の目安)。
+   大きな見出しだけ明朝の太字。 */
 :root {
   color-scheme: light dark;
   --bg: #fbfbfd;
@@ -8,7 +9,7 @@
   --line: #d2d2d7;
   --accent: #0066cc;
   --bar: rgba(251, 251, 253, 0.8);
-  --gothic: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+  --gothic: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic Medium", "Yu Gothic", "Meiryo", sans-serif;
   --mincho: "YuMincho", "Yu Mincho", "游明朝", "游明朝体", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Noto Serif CJK JP", "Noto Serif JP", "IPAexMincho", serif;
 }
 @media (prefers-color-scheme: dark) {
@@ -86,17 +87,13 @@ h1 {
 .lead {
   margin: 56px 0 0;
   text-align: center;
-  font-family: var(--mincho);
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 2;
+  font-size: 17px;
+  line-height: 1.9;
 }
 .words {
   margin: 20px 0 0;
   text-align: center;
-  font-family: var(--mincho);
   font-size: 14px;
-  font-weight: 500;
   color: var(--ink-sub);
 }
 
@@ -105,7 +102,7 @@ table.toc { width: 100%; margin: 64px 0 0; border-collapse: collapse; }
 table.toc td { padding: 18px 0; border-top: 1px solid var(--line); vertical-align: baseline; }
 table.toc tr:last-child td { border-bottom: 1px solid var(--line); }
 table.toc td.no { width: 4.5em; font-size: 13px; color: var(--ink-sub); }
-table.toc td.title { font-family: var(--mincho); font-size: 17px; font-weight: 500; }
+table.toc td.title { font-size: 16px; }
 table.toc td.title a { color: var(--ink); }
 table.toc td.title a:hover { color: var(--accent); text-decoration: none; }
 table.toc td.size { width: 5.5em; text-align: right; font-size: 13px; color: var(--ink-sub); font-variant-numeric: tabular-nums; }
@@ -113,11 +110,9 @@ table.toc td.size { width: 5.5em; text-align: right; font-size: 13px; color: var
 /* 本文 */
 #novel {
   margin: 56px 0 0;
-  font-family: var(--mincho);
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 2.1;
-  letter-spacing: 0.05em;
+  font-size: 17px;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
 }
 #novel p { margin: 0; }
 
@@ -137,6 +132,6 @@ table.toc td.size { width: 5.5em; text-align: right; font-size: 13px; color: var
   main { padding: 48px 20px 72px; }
   h1 { font-size: 28px; }
   .lead { font-size: 16px; margin-top: 40px; }
-  #novel { font-size: 17px; margin-top: 40px; }
-  table.toc td.title { font-size: 16px; }
+  #novel { font-size: 16px; margin-top: 40px; }
+  table.toc td.title { font-size: 15px; }
 }
