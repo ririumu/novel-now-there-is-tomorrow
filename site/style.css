@@ -1,133 +1,138 @@
-/* 配色と書体はここで一元管理する。
-   読ませる文(題名・あらすじ・話タイトル・本文)は明朝、操作部品(ヘッダ・パンくず・ナビ・表見出し)はゴシック。 */
+/* 配色・書体はここで一元管理する。
+   読ませる文(題名・あらすじ・話タイトル・本文)は明朝、操作部品(ヘッダ・ナビ・メタ情報)はゴシック。 */
 :root {
-  --ink: #000;
-  --ink-sub: #555;
-  --line: #999;
-  --line-soft: #ccc;
-  --paper: #fff;
-  --ground: #f4f4ee;
-  --tint: #efefe6;
-  --tint-light: #fafaf5;
-  --accent: #336699;
-  --accent-light: #dde6ee;
-  --accent-line: #99b3cc;
-  --gothic: "MS PGothic", "ＭＳ Ｐゴシック", "Osaka", "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif;
-  --mincho: "Hiragino Mincho ProN", "Hiragino Mincho Pro", "YuMincho", "Yu Mincho", "游明朝", "HGS明朝E", "MS PMincho", "ＭＳ Ｐ明朝", "Noto Serif CJK JP", "Noto Serif JP", "IPAexMincho", serif;
+  color-scheme: light dark;
+  --bg: #fbfbfd;
+  --ink: #1d1d1f;
+  --ink-sub: #6e6e73;
+  --line: #d2d2d7;
+  --accent: #0066cc;
+  --bar: rgba(251, 251, 253, 0.8);
+  --gothic: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+  --mincho: "Hiragino Mincho ProN", "Hiragino Mincho Pro", "YuMincho", "Yu Mincho", "游明朝", "Noto Serif CJK JP", "Noto Serif JP", "IPAexMincho", serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000;
+    --ink: #f5f5f7;
+    --ink-sub: #86868b;
+    --line: #424245;
+    --accent: #2997ff;
+    --bar: rgba(0, 0, 0, 0.72);
+  }
 }
 
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
-  padding: 0;
-  background: var(--ground);
+  background: var(--bg);
   color: var(--ink);
   font-family: var(--gothic);
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
-a:link { color: #0000cc; }
-a:visited { color: #660099; }
-a:hover { color: #ff0000; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
 
-#wrap {
-  width: 780px;
-  max-width: 100%;
-  box-sizing: border-box;
-  margin: 0 auto;
-  background: var(--paper);
-  border-left: 1px solid var(--line);
-  border-right: 1px solid var(--line);
-  padding: 0 0 20px;
-}
-
-/* --- 操作部品(ゴシック) --- */
+/* ヘッダ: 半透明のスリムなバー */
 #head {
-  background: var(--accent);
-  color: #fff;
-  padding: 4px 10px;
-  font-size: 12px;
-  border-bottom: 3px double var(--accent-line);
-}
-#head a { color: #fff; }
-#crumb {
-  padding: 4px 10px;
-  font-size: 12px;
-  background: var(--tint);
-  border-bottom: 1px solid var(--line-soft);
-}
-.nav {
-  margin: 10px;
-  padding: 4px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 0 24px;
+  height: 48px;
+  line-height: 48px;
   text-align: center;
   font-size: 13px;
-}
-.nav span.sep { color: var(--line); margin: 0 .8em; }
-.nav .off { color: #aaa; }
-#foot {
-  margin: 14px 10px 0;
-  padding-top: 6px;
-  border-top: 1px solid var(--line);
-  font-size: 11px;
-  color: var(--ink-sub);
-  text-align: center;
-}
-
-/* --- 読ませる文(明朝) --- */
-h1 {
-  margin: 18px 10px 6px;
-  padding: 0 0 6px;
-  font-family: var(--mincho);
-  font-size: 20px;
-  font-weight: bold;
-  letter-spacing: 0.1em;
-  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  background: var(--bar);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid var(--line);
 }
-.sub {
-  margin: 0 10px 10px;
-  font-size: 12px;
-  color: var(--ink-sub);
+#head a { color: var(--ink); }
+#head a:hover { text-decoration: none; opacity: .6; }
+
+main { max-width: 680px; margin: 0 auto; padding: 72px 24px 96px; }
+
+/* 見出し */
+.eyebrow {
+  margin: 0 0 12px;
   text-align: center;
-}
-
-.box {
-  margin: 10px;
-  padding: 8px 12px 10px;
-  border: 1px solid var(--line);
-  background: var(--tint-light);
-  font-family: var(--mincho);
-  font-size: 15px;
-  line-height: 1.8;
-}
-.box h2 {
-  margin: 0 0 6px;
-  padding: 0;
-  font-family: var(--gothic);
   font-size: 13px;
-  color: var(--accent);
-  border-bottom: 1px dotted var(--line);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--ink-sub);
+}
+h1 {
+  margin: 0;
+  text-align: center;
+  font-family: var(--mincho);
+  font-size: 40px;
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+.sub {
+  margin: 20px 0 0;
+  text-align: center;
+  font-size: 13px;
+  color: var(--ink-sub);
+}
+.lead {
+  margin: 56px 0 0;
+  text-align: center;
+  font-family: var(--mincho);
+  font-size: 18px;
+  line-height: 2;
+}
+.words {
+  margin: 20px 0 0;
+  text-align: center;
+  font-family: var(--mincho);
+  font-size: 14px;
+  color: var(--ink-sub);
 }
 
-table.toc { width: calc(100% - 20px); margin: 10px; border-collapse: collapse; }
-table.toc th, table.toc td { border: 1px solid var(--line); padding: 5px 8px; }
-table.toc th { background: var(--accent-light); font-weight: normal; text-align: left; }
-table.toc td.no { width: 4em; text-align: center; background: var(--tint-light); }
-table.toc td.title { font-family: var(--mincho); font-size: 15px; }
-table.toc td.size { width: 6em; text-align: right; color: var(--ink-sub); font-size: 12px; }
+/* 目次 */
+table.toc { width: 100%; margin: 64px 0 0; border-collapse: collapse; }
+table.toc td { padding: 18px 0; border-top: 1px solid var(--line); vertical-align: baseline; }
+table.toc tr:last-child td { border-bottom: 1px solid var(--line); }
+table.toc td.no { width: 4.5em; font-size: 13px; color: var(--ink-sub); }
+table.toc td.title { font-family: var(--mincho); font-size: 17px; }
+table.toc td.title a { color: var(--ink); }
+table.toc td.title a:hover { color: var(--accent); text-decoration: none; }
+table.toc td.size { width: 5.5em; text-align: right; font-size: 13px; color: var(--ink-sub); font-variant-numeric: tabular-nums; }
 
+/* 本文 */
 #novel {
-  margin: 10px;
-  padding: 24px 30px 30px;
-  border: 1px solid var(--line);
-  background: var(--paper);
+  margin: 56px 0 0;
   font-family: var(--mincho);
-  font-size: 17px;
-  line-height: 2;
-  letter-spacing: 0.04em;
+  font-size: 18px;
+  line-height: 2.1;
+  letter-spacing: 0.05em;
 }
 #novel p { margin: 0; }
 
-@media (max-width: 480px) {
-  #novel { padding: 16px 14px 20px; font-size: 16px; }
-  h1 { font-size: 18px; }
+/* 前後ナビ */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 72px 0 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+}
+.nav .off { color: var(--line); }
+
+@media (max-width: 600px) {
+  main { padding: 48px 20px 72px; }
+  h1 { font-size: 28px; }
+  .lead { font-size: 16px; margin-top: 40px; }
+  #novel { font-size: 17px; margin-top: 40px; }
+  table.toc td.title { font-size: 16px; }
 }
