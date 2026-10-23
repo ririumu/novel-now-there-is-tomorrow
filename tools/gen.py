@@ -38,13 +38,31 @@ def split_title(first):
     return (m.group(1), m.group(2).strip()) if m else ("", t)
 
 
+def lint(path, text, title_ok):
+    """誤字脱字の修正で入りやすい崩れを警告する(ビルドは止めない)。"""
+    warns = []
+    if not title_ok:
+        warns.append("1行目が『〔第N話：題名〕』『【　第N話:題名　】』の形式でない")
+    for o, c in (("「", "」"), ("『", "』"), ("（", "）"), ("(", ")")):
+        if text.count(o) != text.count(c):
+            warns.append(f"括弧の対応が合わない {o}{c}: {text.count(o)} / {text.count(c)}")
+    if "\t" in text:
+        warns.append("タブ文字がある")
+    for i, l in enumerate(text.split("\n"), 1):
+        if l != l.rstrip():
+            warns.append(f"{i}行目: 行末に空白")
+    for w in warns:
+        print(f"warning: {path.name}: {w}", file=sys.stderr)
+
+
 def chapters():
     files = sorted(SRC.glob("[0-9]*.txt"), key=lambda p: int(p.stem))
     out = []
     for p in files:
         text = p.read_text(encoding="utf-8").replace("\r\n", "\n")
         lines = text.split("\n")
-        _, sub = split_title(lines[0])
+        num, sub = split_title(lines[0])
+        lint(p, text, bool(num))
         body = lines[1:]
         while body and not body[0].strip():
             body.pop(0)
@@ -90,6 +108,10 @@ def index_page(cs):
 def main():
     cs = chapters()
     OUT.mkdir(exist_ok=True)
+    keep = {f"{c['n']}.html" for c in cs}
+    for old in OUT.glob("[0-9]*.html"):
+        if old.name not in keep:
+            old.unlink()
     for c in cs:
         (OUT / f"{c['n']}.html").write_text(chapter_page(c, len(cs)), encoding="utf-8")
     (OUT / "index.html").write_text(index_page(cs), encoding="utf-8")
