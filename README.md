@@ -1,4 +1,4 @@
-# Back To The Basic
+# AIなき春に、法を問う (Back To The Basic)
 
 AI がない頃に憧れてみました。(原稿は `source_data/`)
 
