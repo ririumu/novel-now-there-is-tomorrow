@@ -11,3 +11,5 @@
 [Fri Oct 23 20:07:08 JST 2026] それから、成果物にしかない、文書データがあるのはおかしいですから、それもソース原稿に反映させるべきでしょう。
 [Fri Oct 23 20:10:17 JST 2026] はい、全体的そう思います。また私は、なぜこのページにヘッダUIが必要なのかわかりません。なので、それらをやってください
 [Sat Oct 24 02:59:53 JST 2026] ok こちら gh コマンドで、 private repo　として作成し push までお願いします dist は ignore しないで
+[Sat Oct 24 03:01:35 JST 2026] ちなみに back to the basic は code name なんだけど eng slug は、本当のところ、何が一番いいと思う？全文読んで、考えてみて10つ。
+[Sat Oct 24 03:02:30 JST 2026] repo name を考え直したい 単発小説 static repo なんだよね `now-there-is-tomorrow` を含めたい、どうしよ
