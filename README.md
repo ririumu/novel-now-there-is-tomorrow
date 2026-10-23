@@ -12,4 +12,5 @@ make build                  # site/*.html を再生成(括弧の対応など体�
 make serve                  # http://localhost:8000 で確認
 ```
 python3 標準ライブラリのみ。npm 等のビルドツールは使いません。
+題名は `00_TITLE.md`、あらすじは `00_SYNOPSIS.md`、作者のことばは `00_README.md` を直せば反映されます。
 `source_data/` は別リポジトリなので、原稿の変更はそちらで commit してください。
