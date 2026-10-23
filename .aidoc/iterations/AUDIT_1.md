@@ -24,3 +24,5 @@
 - feat/build-and-ink: 文字色を黒強調(ライト #000 / ダーク #fff、補助色も濃く)。誤字脱字修正に備え、`make build` を追加(`site` は別名)。gen.py に lint(括弧 「」『』（）() の対応・題名形式・タブ・行末空白を警告のみで通知)と、原稿が無くなった古い N.html の削除を追加。
   Makefile の依存関係による増分ビルドは、macOS の make 3.81 が秒単位の時刻判定のため直後の編集を取りこぼし、検証用の誤字が site/ に残る事故が起きたので廃止し、毎回全再生成に変更(再検証済み: 生成物に検証文字は残らず、source_data は無変更)。
   現状の lint 警告: 1.txt 96行目 / 7.txt 93行目の行末空白(表示には影響しないため原稿は未変更)。source_data は別リポジトリのため原稿の整形はしていない(題名括弧の【】/〔〕混在は gen.py が両対応)。
+- feat/meta-into-source: 題名(gen.py 定数)とあらすじ(meta/synopsis.txt)が成果物側にしか無いのは不整合、とのユーザ指摘。原稿リポジトリ(source_data)に 00_TITLE.md / 00_SYNOPSIS.md を追加(ブランチ add-title-synopsis → main へローカル merge。source_data の origin は公開 gist のため push はしていない)。gen.py はそれらを読み、meta/ を削除。生成物は無変更(site に差分なし)。
+  注意: 親リポジトリの gitlink は source_data のローカル commit を指すため、gist へ push するまで他環境では解決できない。
