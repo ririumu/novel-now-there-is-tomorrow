@@ -26,3 +26,9 @@
   現状の lint 警告: 1.txt 96行目 / 7.txt 93行目の行末空白(表示には影響しないため原稿は未変更)。source_data は別リポジトリのため原稿の整形はしていない(題名括弧の【】/〔〕混在は gen.py が両対応)。
 - feat/meta-into-source: 題名(gen.py 定数)とあらすじ(meta/synopsis.txt)が成果物側にしか無いのは不整合、とのユーザ指摘。原稿リポジトリ(source_data)に 00_TITLE.md / 00_SYNOPSIS.md を追加(ブランチ add-title-synopsis → main へローカル merge。source_data の origin は公開 gist のため push はしていない)。gen.py はそれらを読み、meta/ を削除。生成物は無変更(site に差分なし)。
   注意: 親リポジトリの gitlink は source_data のローカル commit を指すため、gist へ push するまで他環境では解決できない。
+- fix/mobile-ellipsis-header: 自己レビューで見つけた欠陥の修正+ユーザ指示「ヘッダ UI は不要」。
+  (1) スマホ幅で題名・本文が単語途中で折れる → `word-break: auto-phrase`(文節改行、Chrome/Edge)+`line-break: strict`、480px 以下の h1 を 24px に。Safari は auto-phrase 未対応のため通常禁則に退化(未確認)。
+  (2) 三点リーダ「……」が行下端の点に見える → 原因は font-family 先頭の -apple-system(SF)の字形が使われること。日本語フォント(ヒラギノ角ゴ/Yu Gothic)を先頭に、-apple-system は後ろへ。
+  (3) favicon 404 → インライン SVG(黒地に「あ」)を追加。
+  (4) sticky ヘッダ(題名バー)を削除。各話からの目次導線は末尾の「前の話/目次/次の話」のみ。
+  確認: headless Chrome で 390px 幅(iframe)の目次・第1話、デスクトップの第2話、ダーク配色(media ブロックを展開した検証用 CSS でシミュレーション)を目視。実機の prefers-color-scheme・Windows・Safari は未確認。
