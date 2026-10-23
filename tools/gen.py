@@ -6,7 +6,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "source_data"
 OUT = ROOT / "site"
-BOOK = "Back To The Basic"
+BOOK = "AIなき春に、法を問う"
+SUBTITLE = "Back To The Basic"
 
 PAGE = """<!DOCTYPE html>
 <html lang="ja">
@@ -76,13 +77,20 @@ def index_page(cs):
     rows = "\n".join(
         f'<tr><td class="no">第{c["n"]}話</td><td class="title"><a href="{c["n"]}.html">{e(c["sub"])}</a></td>'
         f'<td class="size">{c["chars"]:,}字</td></tr>' for c in cs)
-    synopsis = (SRC / "00_README.md").read_text(encoding="utf-8").strip()
+    synopsis = "<br>\n".join(e(l) for l in (ROOT / "meta" / "synopsis.txt").read_text(encoding="utf-8").strip().split("\n"))
+    words = (SRC / "00_README.md").read_text(encoding="utf-8").strip()
+    status = "完結" if "（完）" in cs[-1]["body"][-1] else "連載中"
     body = f"""<div id="crumb">トップ</div>
 <h1>{BOOK}</h1>
-<p class="sub">連載中 ／ 全{len(cs)}話 ／ {total:,}字</p>
+<p class="sub">{SUBTITLE}</p>
+<p class="sub">{status} ／ 全{len(cs)}話 ／ {total:,}字</p>
 <div class="box">
 <h2>あらすじ</h2>
-{e(synopsis)}
+{synopsis}
+</div>
+<div class="box">
+<h2>作者のことば</h2>
+{e(words)}
 </div>
 <table class="toc">
 <tr><th colspan="3">目次</th></tr>
