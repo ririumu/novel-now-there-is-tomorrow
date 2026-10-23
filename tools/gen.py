@@ -66,14 +66,15 @@ def chapter_page(c, last):
     paras = "\n".join(f"<p>{e(l)}</p>" if l.strip() else "<p><br></p>" for l in c["body"])
     title = f"第{c['n']}話 {c['sub']}"
     body = (f'<div id="crumb"><a href="index.html">トップ</a> &gt; 第{c["n"]}話</div>\n'
-            f'{nav(c["n"], last)}\n<div id="novel">\n<h1>{e(title)}</h1>\n{paras}\n</div>\n{nav(c["n"], last)}')
+            f'<h1>{e(title)}</h1>\n<p class="sub"><a href="index.html">{BOOK}</a></p>\n'
+            f'{nav(c["n"], last)}\n<div id="novel">\n{paras}\n</div>\n{nav(c["n"], last)}')
     return PAGE.format(title=e(f"{title} - {BOOK}"), book=BOOK, body=body)
 
 
 def index_page(cs):
     total = sum(c["chars"] for c in cs)
     rows = "\n".join(
-        f'<tr><td class="no">第{c["n"]}話</td><td><a href="{c["n"]}.html">{e(c["sub"])}</a></td>'
+        f'<tr><td class="no">第{c["n"]}話</td><td class="title"><a href="{c["n"]}.html">{e(c["sub"])}</a></td>'
         f'<td class="size">{c["chars"]:,}字</td></tr>' for c in cs)
     synopsis = (SRC / "00_README.md").read_text(encoding="utf-8").strip()
     body = f"""<div id="crumb">トップ</div>

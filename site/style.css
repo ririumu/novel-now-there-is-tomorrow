@@ -1,9 +1,27 @@
+/* 配色と書体はここで一元管理する。
+   読ませる文(題名・あらすじ・話タイトル・本文)は明朝、操作部品(ヘッダ・パンくず・ナビ・表見出し)はゴシック。 */
+:root {
+  --ink: #000;
+  --ink-sub: #555;
+  --line: #999;
+  --line-soft: #ccc;
+  --paper: #fff;
+  --ground: #f4f4ee;
+  --tint: #efefe6;
+  --tint-light: #fafaf5;
+  --accent: #336699;
+  --accent-light: #dde6ee;
+  --accent-line: #99b3cc;
+  --gothic: "MS PGothic", "ＭＳ Ｐゴシック", "Osaka", "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif;
+  --mincho: "Hiragino Mincho ProN", "Hiragino Mincho Pro", "YuMincho", "Yu Mincho", "游明朝", "HGS明朝E", "MS PMincho", "ＭＳ Ｐ明朝", "Noto Serif CJK JP", "Noto Serif JP", "IPAexMincho", serif;
+}
+
 body {
   margin: 0;
   padding: 0;
-  background: #f4f4f0;
-  color: #000;
-  font-family: "MS PGothic", "ＭＳ Ｐゴシック", "Osaka", "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--gothic);
   font-size: 14px;
   line-height: 1.5;
 }
@@ -16,81 +34,100 @@ a:hover { color: #ff0000; }
   max-width: 100%;
   box-sizing: border-box;
   margin: 0 auto;
-  background: #fff;
-  border-left: 1px solid #999;
-  border-right: 1px solid #999;
+  background: var(--paper);
+  border-left: 1px solid var(--line);
+  border-right: 1px solid var(--line);
   padding: 0 0 20px;
 }
+
+/* --- 操作部品(ゴシック) --- */
 #head {
-  background: #336699;
+  background: var(--accent);
   color: #fff;
   padding: 4px 10px;
   font-size: 12px;
-  border-bottom: 3px double #99b3cc;
+  border-bottom: 3px double var(--accent-line);
 }
 #head a { color: #fff; }
 #crumb {
   padding: 4px 10px;
   font-size: 12px;
-  background: #eee;
-  border-bottom: 1px solid #ccc;
+  background: var(--tint);
+  border-bottom: 1px solid var(--line-soft);
 }
-h1 {
-  margin: 14px 10px 6px;
-  padding: 0 0 4px;
-  font-size: 20px;
-  font-weight: bold;
-  border-bottom: 1px solid #999;
-}
-.sub { margin: 0 10px 10px; font-size: 12px; color: #555; }
-
-.box {
-  margin: 10px;
-  padding: 8px 10px;
-  border: 1px solid #999;
-  background: #fafafa;
-}
-.box h2 {
-  margin: 0 0 6px;
-  padding: 0;
-  font-size: 13px;
-  color: #336699;
-  border-bottom: 1px dotted #999;
-}
-
-table.toc { width: calc(100% - 20px); margin: 10px; border-collapse: collapse; }
-table.toc th, table.toc td { border: 1px solid #999; padding: 4px 8px; }
-table.toc th { background: #dde6ee; font-weight: normal; text-align: left; }
-table.toc td.no { width: 4em; text-align: center; background: #f4f4f4; }
-table.toc td.size { width: 6em; text-align: right; color: #555; font-size: 12px; }
-
 .nav {
   margin: 10px;
   padding: 4px 0;
   text-align: center;
   font-size: 13px;
 }
-.nav span.sep { color: #999; margin: 0 .8em; }
+.nav span.sep { color: var(--line); margin: 0 .8em; }
 .nav .off { color: #aaa; }
+#foot {
+  margin: 14px 10px 0;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+  font-size: 11px;
+  color: var(--ink-sub);
+  text-align: center;
+}
+
+/* --- 読ませる文(明朝) --- */
+h1 {
+  margin: 18px 10px 6px;
+  padding: 0 0 6px;
+  font-family: var(--mincho);
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+.sub {
+  margin: 0 10px 10px;
+  font-size: 12px;
+  color: var(--ink-sub);
+  text-align: center;
+}
+
+.box {
+  margin: 10px;
+  padding: 8px 12px 10px;
+  border: 1px solid var(--line);
+  background: var(--tint-light);
+  font-family: var(--mincho);
+  font-size: 15px;
+  line-height: 1.8;
+}
+.box h2 {
+  margin: 0 0 6px;
+  padding: 0;
+  font-family: var(--gothic);
+  font-size: 13px;
+  color: var(--accent);
+  border-bottom: 1px dotted var(--line);
+}
+
+table.toc { width: calc(100% - 20px); margin: 10px; border-collapse: collapse; }
+table.toc th, table.toc td { border: 1px solid var(--line); padding: 5px 8px; }
+table.toc th { background: var(--accent-light); font-weight: normal; text-align: left; }
+table.toc td.no { width: 4em; text-align: center; background: var(--tint-light); }
+table.toc td.title { font-family: var(--mincho); font-size: 15px; }
+table.toc td.size { width: 6em; text-align: right; color: var(--ink-sub); font-size: 12px; }
 
 #novel {
   margin: 10px;
-  padding: 20px 30px 30px;
-  border: 1px solid #999;
-  background: #fff;
-  font-family: "Hiragino Mincho ProN", "Hiragino Mincho Pro", "YuMincho", "Yu Mincho", "游明朝", "HGS明朝E", "MS PMincho", "ＭＳ Ｐ明朝", "Noto Serif CJK JP", "Noto Serif JP", "IPAexMincho", serif;
+  padding: 24px 30px 30px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  font-family: var(--mincho);
   font-size: 17px;
   line-height: 2;
   letter-spacing: 0.04em;
 }
-#novel h1 { margin: 0 0 1.6em; text-align: center; font-size: 19px; font-weight: bold; letter-spacing: 0.1em; border-bottom: none; }
 #novel p { margin: 0; }
 
-#foot {
-  margin: 14px 10px 0;
-  padding-top: 6px;
-  border-top: 1px solid #999;
-  font-size: 11px;
-  color: #666;
-  text-align: center;
+@media (max-width: 480px) {
+  #novel { padding: 16px 14px 20px; font-size: 16px; }
+  h1 { font-size: 18px; }
 }
