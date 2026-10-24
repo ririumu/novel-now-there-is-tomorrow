@@ -36,3 +36,6 @@
 - docs/reader-first-readme: README を読者向けに全面書き直し(題名・一文あらすじ・「第1話から読む」リンク・公開サイトへの目次リンク・作者のことば)。保守手順は折りたたみ(details)に移動。
 - test/e2e: `tools/e2e.py` + `make e2e` を追加。公開サイトの目次→全リンク、各話の見出し/本文/前後ナビ/CSS、GitHub 上で描画された README の公開サイトリンクを実際に HTTP で辿って検証(全項目 PASS)。目視: GitHub のリポジトリページ、公開サイトの目次と最終話末尾(390px 幅)。
   目視で見つけた導線の穴を修正: リポジトリ About 欄が空 → description と homepage(公開 URL)を設定。README 目次表の空の列見出しを「話」に。
+- 履歴の名義修正(ユーザ指示): 全作業の主体・権利は ririumu 個人に帰属(All rights reserved)。Claude が Contributors に出ていたのは、commit メッセージの Co-Authored-By と、ローカル既定の名義(Jasmine, アカウント未紐付け)が原因。
+  両リポジトリを bundle でバックアップ後、git filter-branch で author/committer を `ririumu <33805628+ririumu@users.noreply.github.com>` に統一し Co-Authored-By 行を削除。source_data は未 push の 2 commit のみ書き換え(gist 上の既存 commit は元から ririumu 名義で無変更)、親リポジトリの gitlink を新 commit へ張り替え。refs/original・reflog を削除して gc。
+  検証: 全 38 commit が ririumu、Claude 言及 0、gitlink はすべて実在、内容は書き換え前と同一。`--force-with-lease` で force push。GitHub API 上も 38 commit すべて ririumu に紐付き、Contributors は ririumu のみ。Pages 再配信成功、`make e2e` ALL PASSED。両リポジトリのローカル git 設定を ririumu に変更し、以後の commit にも帰属表記を付けない。
