@@ -19,3 +19,4 @@
 [Sat Oct 24 20:19:47 JST 2026] readme は user (=読者) ファーストであるべきです。 https://ririumu.github.io/novel-now-there-is-tomorrow/ への自然な動線になるよう、フルリライトしてください。
 [Sat Oct 24 20:21:29 JST 2026] push & e2e view test してください
 [Sat Oct 24 20:26:03 JST 2026] Claude だと最悪ですね。私に全部クレジットがあります。 all rights reserved ライセンスでもある。それは最悪です。全ての作業の主体及び権利は ririumu 個人に帰属しますから、 git log 全てを根本的に修正して、かつ force push してください。
+[Sat Oct 24 21:04:54 JST 2026] 当然やるでしょ　やりきって　- 「All rights reserved」を明示するには、今は LICENSE ファイルも README の著作権表記もありません。Copyright (c) 2026 ririumu. All rights reserved. 　全てを完了させて

@@ -39,3 +39,4 @@
 - 履歴の名義修正(ユーザ指示): 全作業の主体・権利は ririumu 個人に帰属(All rights reserved)。Claude が Contributors に出ていたのは、commit メッセージの Co-Authored-By と、ローカル既定の名義(Jasmine, アカウント未紐付け)が原因。
   両リポジトリを bundle でバックアップ後、git filter-branch で author/committer を `ririumu <33805628+ririumu@users.noreply.github.com>` に統一し Co-Authored-By 行を削除。source_data は未 push の 2 commit のみ書き換え(gist 上の既存 commit は元から ririumu 名義で無変更)、親リポジトリの gitlink を新 commit へ張り替え。refs/original・reflog を削除して gc。
   検証: 全 38 commit が ririumu、Claude 言及 0、gitlink はすべて実在、内容は書き換え前と同一。`--force-with-lease` で force push。GitHub API 上も 38 commit すべて ririumu に紐付き、Contributors は ririumu のみ。Pages 再配信成功、`make e2e` ALL PASSED。両リポジトリのローカル git 設定を ririumu に変更し、以後の commit にも帰属表記を付けない。
+- docs/all-rights-reserved: LICENSE(日英、All rights reserved)を追加。全ページのフッター・README に「Copyright © 2026 ririumu. All rights reserved.」。e2e に著作権表記と LICENSE の存在チェックを追加。
