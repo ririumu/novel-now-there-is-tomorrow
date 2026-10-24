@@ -15,7 +15,7 @@
 
 ## 目次
 
-| | 題名 |
+| 話 | 題名 |
 |---|---|
 | 第1話 | [知識だ！チートだ！無双だ！](https://ririumu.github.io/novel-now-there-is-tomorrow/1.html) |
 | 第2話 | [いざ、ババア幼女化計画！](https://ririumu.github.io/novel-now-there-is-tomorrow/2.html) |
