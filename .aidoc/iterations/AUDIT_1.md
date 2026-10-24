@@ -40,3 +40,5 @@
   両リポジトリを bundle でバックアップ後、git filter-branch で author/committer を `ririumu <33805628+ririumu@users.noreply.github.com>` に統一し Co-Authored-By 行を削除。source_data は未 push の 2 commit のみ書き換え(gist 上の既存 commit は元から ririumu 名義で無変更)、親リポジトリの gitlink を新 commit へ張り替え。refs/original・reflog を削除して gc。
   検証: 全 38 commit が ririumu、Claude 言及 0、gitlink はすべて実在、内容は書き換え前と同一。`--force-with-lease` で force push。GitHub API 上も 38 commit すべて ririumu に紐付き、Contributors は ririumu のみ。Pages 再配信成功、`make e2e` ALL PASSED。両リポジトリのローカル git 設定を ririumu に変更し、以後の commit にも帰属表記を付けない。
 - docs/all-rights-reserved: LICENSE(日英、All rights reserved)を追加。全ページのフッター・README に「Copyright © 2026 ririumu. All rights reserved.」。e2e に著作権表記と LICENSE の存在チェックを追加。
+- 後片付け: 書き換え前 commit を参照する Actions 実行記録 3 件と github-pages デプロイ記録 3 件を削除。古い commit 本体は SHA 直指定でまだ参照可能(完全削除は GitHub サポート案件)。
+- 原稿 gist へ 00_TITLE.md / 00_SYNOPSIS.md を fast-forward push(内容は公開サイト掲載済みのもの、gh トークンの gist スコープを利用)。`.gitmodules` を追加し source_data を正式なサブモジュール化。新規 `git clone --recursive` → `make build` で site/ に差分なしを確認。Actions の exit code 128 警告も解消。`make e2e` ALL PASSED。
