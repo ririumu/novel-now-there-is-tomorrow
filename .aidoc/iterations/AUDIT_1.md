@@ -33,3 +33,4 @@
   (4) sticky ヘッダ(題名バー)を削除。各話からの目次導線は末尾の「前の話/目次/次の話」のみ。
   確認: headless Chrome で 390px 幅(iframe)の目次・第1話、デスクトップの第2話、ダーク配色(media ブロックを展開した検証用 CSS でシミュレーション)を目視。実機の prefers-color-scheme・Windows・Safari は未確認。
 - GitHub: `gh repo create` で private 作成・push → `novel-now-there-is-tomorrow` に rename。Pages は無料プランの private では不可(HTTP 422)のため、ユーザ選択により repo を public 化(事前に履歴の秘密情報・メールを確認、問題なし)。`.github/workflows/pages.yml` で生成済み site/ をそのまま配信(Actions 上ではビルドしない)。
+- docs/reader-first-readme: README を読者向けに全面書き直し(題名・一文あらすじ・「第1話から読む」リンク・公開サイトへの目次リンク・作者のことば)。保守手順は折りたたみ(details)に移動。
